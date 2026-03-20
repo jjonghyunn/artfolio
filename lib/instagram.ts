@@ -11,6 +11,27 @@ export interface InstagramMedia {
   };
 }
 
+export interface InstagramProfile {
+  id: string;
+  name: string;
+  biography?: string;
+  profile_picture_url?: string;
+}
+
+export async function getInstagramProfile(): Promise<InstagramProfile | null> {
+  const token = process.env.INSTAGRAM_ACCESS_TOKEN;
+  const userId = process.env.INSTAGRAM_BUSINESS_ACCOUNT_ID;
+
+  if (!token || !userId) return null;
+
+  const res = await fetch(
+    `https://graph.facebook.com/v25.0/${userId}?fields=id,name,biography,profile_picture_url&access_token=${token}`,
+    { next: { revalidate: 86400 } }
+  );
+  if (!res.ok) return null;
+  return res.json();
+}
+
 export async function getInstagramMedia(): Promise<InstagramMedia[]> {
   const token = process.env.INSTAGRAM_ACCESS_TOKEN;
   const userId = process.env.INSTAGRAM_BUSINESS_ACCOUNT_ID;
