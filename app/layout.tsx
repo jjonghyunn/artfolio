@@ -4,6 +4,18 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "jjonghyunn — 드로잉 · 유화 · 크로키",
   description: "박종현의 작품 포트폴리오. 드로잉, 유화, 크로키, 그림주문.",
+  openGraph: {
+    title: "jjonghyunn — 드로잉 · 유화 · 크로키",
+    description: "월급쟁이의 그림 — 캔버스 위에 남기는 순간들",
+    url: "https://artfolio-smoky.vercel.app",
+    siteName: "jjonghyunn",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "jjonghyunn — 드로잉 · 유화 · 크로키",
+    description: "월급쟁이의 그림 — 캔버스 위에 남기는 순간들",
+  },
 };
 
 export default function RootLayout({
